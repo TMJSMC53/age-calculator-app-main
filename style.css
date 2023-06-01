@@ -1,0 +1,174 @@
+/*
+  Josh's Custom CSS Reset
+  https://www.joshwcomeau.com/css/custom-css-reset/
+*/
+
+:root {
+  /* colors */
+  /* primary */
+  --primary-purple: hsl(259, 100%, 65%);
+  --primary-lightRed: hsl(0, 100%, 67%);
+
+  /* neutral */
+  --neutral-white: hsl(0, 0%, 100%);
+  --neutral-offWhite: hsla(0, 0%, 94%, 1);
+  --neutral-lgtGrey: hsla(0, 0%, 86%, 1);
+  --neutral-smokeyGrey: hsl(0, 1%, 44%);
+  --neutral-offBlack: hsl(0, 0%, 8%);
+  /* font-family */
+  --ff-primary: "Poppins", sans-serif;
+
+  /* font weights */
+  --fw-regular: 400;
+  --fw-bold: 700;
+  --fw-xtraBold: 800;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+  /* font: inherit; */
+}
+html {
+  /* color-scheme: dark light; */
+}
+html,
+body {
+  font-size: 62.5%;
+  /* height: 100%; */
+}
+body {
+  font-family: var(--ff-primary);
+  background: var(--neutral-offWhite);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+#root,
+#__next {
+  isolation: isolate;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+.wrapper {
+  background-color: var(--neutral-white);
+  margin: 8.8rem 1.6rem 23.8rem 1.6rem;
+  padding: 4.8rem 2.4rem;
+  border-top-left-radius: 2.4rem;
+  border-top-right-radius: 2.4rem;
+  border-bottom-right-radius: 10rem;
+  border-bottom-left-radius: 2.4rem;
+}
+
+.form__control {
+  width: 29.5rem;
+  display: flex;
+  gap: 1.6rem;
+  font-size: 1.2rem;
+  font-weight: var(--fw-bold);
+  margin-bottom: 3.2rem;
+}
+
+.form__control label {
+  color: var(--neutral-smokeyGrey);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+input {
+  width: 87.67px;
+  height: 54px;
+  border: 1px solid var(--neutral-lgtGrey);
+  margin-top: 4px;
+  border-radius: 8px;
+}
+
+input[type="text"] {
+  padding: 1.2rem 1.6rem 1.2rem 1.6rem;
+  font-size: 2rem;
+}
+
+input[type="text"]:focus {
+}
+
+.btn__container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* outline: 1px solid red; */
+  /* z-index: 1; */
+}
+
+.btn {
+  background-color: #854dff;
+  border: 0;
+  padding: 2rem;
+  width: 6.4rem;
+  height: 6.4rem;
+  z-index: 1;
+  cursor: pointer;
+  border-radius: 21.4rem;
+}
+
+.line {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: var(--neutral-lgtGrey);
+}
+
+.results__data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  letter-spacing: -0.32px;
+  font-size: 5.6rem;
+}
+
+.results__numbers {
+  color: var(--primary-purple);
+  font-size: 5.6rem;
+  padding-right: 8px;
+}
+
+.results__data p {
+  font-style: italic;
+  font-weight: var(--fw-xtraBold);
+}
