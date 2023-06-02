@@ -104,10 +104,27 @@ h6 {
   margin-bottom: 3.2rem;
 }
 
-.form__control label {
+.input__container label {
   color: var(--neutral-smokeyGrey);
   text-transform: uppercase;
   letter-spacing: 4px;
+}
+
+/* error management */
+.valid {
+  /* display: none; */
+  font-size: 0.75rem;
+  font-weight: var(--fw-regular);
+  font-style: italic;
+  color: var(--primary-lightRed);
+  line-height: 21px;
+}
+
+.error,
+.border-color {
+  opacity: 1;
+  color: var(--primary-lightRed);
+  border-color: var(--primary-lightRed);
 }
 
 input {
@@ -131,8 +148,6 @@ input[type="text"]:focus {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* outline: 1px solid red; */
-  /* z-index: 1; */
 }
 
 .btn {

@@ -9,7 +9,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;0,800;1,800&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;1,400;1,800&display=swap"
     rel="stylesheet">
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="style.css">
@@ -22,16 +22,24 @@
 
 <body>
   <div class="wrapper">
-    <form class="form__control" action="">
-      <label for=""> Day
-        <input type="text" placeholder="DD">
-      </label>
-      <label for=""> Month
-        <input type="text" placeholder="MM">
-      </label>
-      <label for=""> Year
-        <input type="text" placeholder="YYYY">
-      </label>
+    <form class="form__control" action="#">
+      <section class="input__container">
+        <label for="day"> Day</label>
+        <input type="text" name="day" id="day" placeholder="DD">
+        <span class="valid day">Must be a valid day</span>
+      </section>
+      <section class="input__container">
+        <label for="month" class="error"> Month</label>
+        <input type="text" name="month" id="month" placeholder="MM">
+        <span class="valid month">Must be a valid month</span>
+      </section>
+      <section class="input__container">
+        <label for="year"> Year
+        </label>
+        <input type="text" name="year" id="year" placeholder="YYYY">
+        <span class="valid year">Must be in the past</span>
+      </section>
+
     </form>
     <div class="btn__container">
       <span class="line"></span>
@@ -44,7 +52,7 @@
 
       <p><span class="results__numbers">- -</span>years</p>
       <p><span class="results__numbers">- -</span>months</p>
-      <p><span class="results__numbers">26</span>days</p>
+      <p><span class="results__numbers" data-years>26</span>days</p>
 
     </main>
 
