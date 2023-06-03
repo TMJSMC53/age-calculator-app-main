@@ -49,9 +49,9 @@ const validDay = () => {
 };
 
 const validMonth = () => {
-  dayError.textContent = "Must be a valid day";
+  monthError.textContent = "Must be a valid month";
 
-  if (isNaN(birthMonth.value === "") || birthMonth.value > 12) {
+  if (isNaN(birthMonth.value) || birthMonth.value > 12) {
     showErrorMessages(monthError, monthLabel, birthMonth);
     isMonthPassedValid = false;
   } else if (birthMonth.value === "") {
@@ -93,7 +93,7 @@ const checkDateOfBirth = () => {
     dayValue
   ).getTime();
 
-  const validMonth = getVali(yearValue, monthValue + 1, 0).getDate();
+  const validMonth = getValidMonth(yearValue, monthValue);
 
   const currentDate = Date.now();
 
@@ -111,12 +111,12 @@ const checkDateOfBirth = () => {
 
     isDateOfBirthValid = false;
   } else {
-    isDateOfBirthValid = false;
+    isDateOfBirthValid = true;
   }
 };
 
 const getBirthdayTime = (year, month, day) => {
-  return new Date(year, month, day).getTime();
+  return new Date(year, month, day);
 };
 
 const getValidMonth = (year, month) => {
@@ -127,39 +127,72 @@ const isBirthdayInvalid = (day, validMonth, currentDate, birthdayTime) => {
   return day > validMonth || currentDate < birthdayTime;
 };
 
-const calculateAge = () => {
+const calculateAge = (event) => {
+  event.preventDefault();
   checkDateOfBirth();
 
-  if (!(isDayPassedValid && isMonthPassedValid && isYearPassedValid)) return;
+  if (
+    !(
+      isDayPassedValid &&
+      isMonthPassedValid &&
+      isYearPassedValid &&
+      isDateOfBirthValid
+    )
+  ) {
+    return;
+  }
+
+  const today = new Date();
+  const currentMonth = today.getMonth() + 1;
+  const currentDay = today.getDate();
+
+  let getYearDifference = today.getFullYear() - parseInt(birthYear.value);
+  let getMonthDifference = currentMonth - parseInt(birthMonth.value);
+  let getDayDifference = currentDay - parseInt(birthDay.value);
+
+  if (
+    currentMonth < parseInt(birthMonth.value) ||
+    (currentMonth === parseInt(birthMonth.value) &&
+      currentDay < parseInt(birthDay.value))
+  ) {
+    getYearDifference--;
+    getMonthDifference += 12;
+  }
+
+  if (getDayDifference < 0) {
+    const checkDaysInPrevMonth = new Date(
+      today.getFullYear(),
+      currentMonth - 1,
+      0
+    ).getDate();
+
+    getMonthDifference--;
+    getDayDifference += checkDaysInPrevMonth;
+  }
+
+  // Display the calculated age
+  yearsResults.textContent = getYearDifference;
+  monthsResults.textContent = getMonthDifference;
+  daysResults.textContent = getDayDifference;
 };
 
-const today = new Date();
-const currentMonth = today.getMonth() + 1;
-const currentDay = today.getDate();
-
-let getYearDifference = today.getFullYear() - parseInt(birthYear.value);
-let getMonthDifference = currentMonth - parseInt(birthMonth.value);
-let getDayDifference = currentDay - parseInt(birthDay.value);
-
-const showErrorMessages = (dayError, dayLabel, birthDay) => {
-  dayError.style.opacity = 1;
-  dayLabel.style.color = errorColor;
-  birthDay.style.borderColor = errorColor;
+const showErrorMessages = (errorElement, labelElement, inputElement) => {
+  errorElement.style.opacity = 1;
+  labelElement.style.color = errorColor;
+  inputElement.style.borderColor = errorColor;
 };
 
-const hideErrorMessages = (dayError, dayLabel, birthDay) => {
-  dayError.style.opacity = 0;
-  dayLabel.style.color = textColorDefault;
-  birthDay.style.borderColor = defaultBorderColor;
+const hideErrorMessages = (errorElement, labelElement, inputElement) => {
+  errorElement.style.opacity = 0;
+  labelElement.style.color = textColorDefault;
+  inputElement.style.borderColor = defaultBorderColor;
 };
-
-console.log(validDay(17));
-console.log(validMonth(17));
-console.log(validYear(2019));
-
-// hideErrorMessages(dayError, dayLabel, birthDay);
 
 birthDay.addEventListener("input", validDay);
 birthMonth.addEventListener("input", validMonth);
 birthYear.addEventListener("input", validYear);
 submitButton.addEventListener("click", calculateAge);
+
+submitButton.addEventListener("click", () => {
+  console.log("Button Clicked!");
+});

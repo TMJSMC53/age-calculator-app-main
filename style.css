@@ -45,6 +45,8 @@ body {
   min-height: 100vh;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+
+  overflow: hidden;
 }
 img,
 picture,
@@ -171,19 +173,26 @@ input[type="text"]:focus {
 .results__data {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 
   letter-spacing: -0.32px;
   font-size: 5.6rem;
+  line-height: 61.6px;
+  /* outline: 2px solid magenta; */
 }
 
 .results__numbers {
   color: var(--primary-purple);
-  font-size: 5.6rem;
+  /* font-size: 5.6rem; */
+
   padding-right: 8px;
+  /* outline: 1px solid red; */
 }
 
 .results__data p {
   font-style: italic;
   font-weight: var(--fw-xtraBold);
+  margin: 0;
+  line-height: 1.1;
+  /* outline: 2px solid green; */
 }
