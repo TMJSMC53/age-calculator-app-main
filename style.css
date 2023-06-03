@@ -7,7 +7,7 @@
   /* colors */
   /* primary */
   --primary-purple: hsl(259, 100%, 65%);
-  --primary-lightRed: hsl(0, 100%, 67%);
+  --secondary-lightRed: hsl(0, 100%, 67%);
 
   /* neutral */
   --neutral-white: hsl(0, 0%, 100%);
@@ -33,9 +33,7 @@
   padding: 0;
   /* font: inherit; */
 }
-html {
-  /* color-scheme: dark light; */
-}
+
 html,
 body {
   font-size: 62.5%;
@@ -116,7 +114,7 @@ h6 {
   font-size: 0.75rem;
   font-weight: var(--fw-regular);
   font-style: italic;
-  color: var(--primary-lightRed);
+  color: var(--secondary-lightRed);
   line-height: 21px;
 }
 
@@ -138,9 +136,11 @@ input {
 input[type="text"] {
   padding: 1.2rem 1.6rem 1.2rem 1.6rem;
   font-size: 2rem;
+  outline: none;
 }
 
 input[type="text"]:focus {
+  border: 1px solid var(--neutral-smokeyGrey);
 }
 
 .btn__container {
@@ -151,7 +151,7 @@ input[type="text"]:focus {
 }
 
 .btn {
-  background-color: #854dff;
+  background-color: var(--primary-purple);
   border: 0;
   padding: 2rem;
   width: 6.4rem;
